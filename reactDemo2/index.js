@@ -3,7 +3,29 @@
  */
 
 
-
+var ChrildWosName = React.createClass({
+    componentWillReceiveProps:function(){
+        console.log("1:componentWillReceiveProps");
+    },
+    shouldComponentUpdate:function(){
+        console.log("2:shouldComponentUpdate");
+        return true;
+    },
+    componentWillUpdate  :function(){
+        console.log("3:componentWillUpdate");
+    },
+    render:function(){
+        console.log("4:render");
+        return (
+            <div>
+                <p id="p">测试玩的{this.props.value}</p>
+            </div>
+        )
+    },
+    componentDidUpdate :function(){
+        console.log("5:componentDidUpdate");
+    }
+});
 
 var WosName = React.createClass({
 
@@ -39,7 +61,7 @@ var WosName = React.createClass({
     render: function () {
 
         console.log("4:render");
-        var ss;
+        var ss= "";
         if(this.state.orClick){
             ss = "true";
         }else {
@@ -55,7 +77,9 @@ var WosName = React.createClass({
                 <div id="title">title</div>
                 <input type="text" placeholder="请输入手机号码" value={val} onChange={this.changeInner}/>
                 <p>{value}</p>
+                <ChrildWosName value={value}/>
             </div>
+
         )
 
     },
@@ -67,6 +91,7 @@ var WosName = React.createClass({
         $("#title").unbind().bind("click", function () {
             alert(111);
         });
+        console.log("id=",$(ReactDOM.findDOMNode(this)));
         $(ReactDOM.findDOMNode(this)).append('<div>哈哈哈。。。。</div>')
     },
 
