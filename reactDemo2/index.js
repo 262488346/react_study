@@ -22,6 +22,8 @@ var ChrildWosName = React.createClass({
             </div>
         )
     },
+
+
     componentDidUpdate :function(){
         console.log("5:componentDidUpdate");
     }
