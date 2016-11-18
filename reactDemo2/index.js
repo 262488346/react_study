@@ -4,17 +4,17 @@
 
 
 var ChrildWosName = React.createClass({
-    componentWillReceiveProps:function(){
+    componentWillReceiveProps: function () {
         console.log("1:componentWillReceiveProps");
     },
-    shouldComponentUpdate:function(){
+    shouldComponentUpdate: function () {
         console.log("2:shouldComponentUpdate");
         return true;
     },
-    componentWillUpdate  :function(){
+    componentWillUpdate: function () {
         console.log("3:componentWillUpdate");
     },
-    render:function(){
+    render: function () {
         console.log("4:render");
         return (
             <div>
@@ -22,10 +22,10 @@ var ChrildWosName = React.createClass({
             </div>
         )
     },
-    componentDidUpdate :function(){
+    componentDidUpdate: function () {
         console.log("5:componentDidUpdate");
     },
-    componentWillUnmount: function(){
+    componentWillUnmount: function () {
         console.log("i am died");
     }
 });
@@ -40,23 +40,23 @@ var WosName = React.createClass({
         console.log("2:getInitialState");
         return {
             orClick: true,
-            value:""
+            value: ""
         };
     },
 
-    handleClick : function () {
+    handleClick: function () {
         console.log("handleClick");
-        if(this.state.orClick){
+        if (this.state.orClick) {
             this.setState({orClick: false})
-        }else{
-            this.setState({ orClick: true})
+        } else {
+            this.setState({orClick: true})
         }
     },
     changeInner: function (event) {
         this.setState({
-            value:event.target.value
+            value: event.target.value
         });
-        if(event.target.value == "aaa"){
+        if (event.target.value == "aaa") {
             ReactDOM.unmountComponentAtNode(document.getElementById("example"));
         }
     },
@@ -67,10 +67,10 @@ var WosName = React.createClass({
     render: function () {
 
         console.log("4:render");
-        var ss= "";
-        if(this.state.orClick){
+        var ss = "";
+        if (this.state.orClick) {
             ss = "true";
-        }else {
+        } else {
             ss = "false";
         }
         var value = this.state.value;
@@ -82,6 +82,7 @@ var WosName = React.createClass({
             <div>
                 <div id="title">title</div>
                 <input type="text" placeholder="请输入手机号码" value={val} onChange={this.changeInner}/>
+
                 <p>{value}</p>
                 <ChrildWosName value={value}/>
             </div>
@@ -97,7 +98,7 @@ var WosName = React.createClass({
         $("#title").unbind().bind("click", function () {
             alert(111);
         });
-        console.log("id=",$(ReactDOM.findDOMNode(this)));
+        console.log("id=", $(ReactDOM.findDOMNode(this)));
         $(ReactDOM.findDOMNode(this)).append('<div>哈哈哈。。。。</div>')
     },
 
