@@ -22,10 +22,11 @@ var ChrildWosName = React.createClass({
             </div>
         )
     },
-
-
     componentDidUpdate :function(){
         console.log("5:componentDidUpdate");
+    },
+    componentWillUnmount: function(){
+        console.log("i am died");
     }
 });
 
@@ -54,7 +55,10 @@ var WosName = React.createClass({
     changeInner: function (event) {
         this.setState({
             value:event.target.value
-        })
+        });
+        if(event.target.value == "aaa"){
+            ReactDOM.unmountComponentAtNode(document.getElementById("example"));
+        }
     },
     componentWillMount: function () {
         console.log("3:componentWillMount");
@@ -106,5 +110,5 @@ ReactDOM.render(
         <WosName/>
     </div>
     ,
-    document.getElementById("content")
+    document.getElementById("example")
 );
