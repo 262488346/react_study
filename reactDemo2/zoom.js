@@ -22,11 +22,8 @@ var ZoomInner = React.createClass({
             value:this.props.val
         }
     },
-
-
-
     render: function(){
-        var value = this.state.value;
+        var value = this.props.val;
         console.log("valule=", value);
         var style;
         if(value.length > 5){
@@ -54,13 +51,11 @@ var ZoomInput = React.createClass({
     },
     render: function () {
         var zoomInner;
-        if(this.state.zoom != 1){
-            zoomInner = <ZoomInner val={this.state.val}/>;
-        }
+
         return (
             <div>
                 <input type="text" placeholder="请输入文字" onChange={this.changeText}/>
-                {zoomInner}
+                 <ZoomInner val={this.state.val}/>
             </div>
         )
     }
