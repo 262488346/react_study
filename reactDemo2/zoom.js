@@ -48,7 +48,8 @@ var ZoomInner = React.createClass({
         )
     }
 });
-var ZoomInput = React.createClass({
+
+var Min = {
     getInitialState: function () {
         return {
             val: "放大镜",
@@ -65,7 +66,25 @@ var ZoomInput = React.createClass({
             zoom:2
         })
     },
+};
 
+var ZoomInput1 = React.createClass({
+    mixins: [Min],
+    render: function () {
+        var zoomInner;
+        if(this.state.zoom == 1){
+            zoomInner = <ZoomInner val={this.state.val}  zoomHide={this.zoomHide}/>;
+        }
+        return (
+            <div>
+                <input type="text" placeholder="请输入文字" onChange={this.changeText}/>
+                {zoomInner}
+            </div>
+        )
+    }
+});
+var ZoomInput2 = React.createClass({
+    mixins: [Min],
     render: function () {
         var zoomInner;
         if(this.state.zoom == 1){
@@ -81,6 +100,10 @@ var ZoomInput = React.createClass({
 });
 
 ReactDOM.render(
-    <ZoomInput/>,
-    document.getElementById("example")
+    <ZoomInput1/>,
+    document.getElementById("example1")
+);
+ReactDOM.render(
+    <ZoomInput2/>,
+    document.getElementById("example2")
 );
